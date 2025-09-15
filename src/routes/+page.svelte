@@ -1,4 +1,10 @@
-<h1 class="text-3xl font-bold mb-6">Hello SvelteKit + Tailwind + DaisyUI 👋</h1>
+
+
+<p>
+    Visit <a href="https://svelte.dev" class="primary underline">Svelte</a>,
+</p>
+
+<h1 class="text-primary">Hello SvelteKit + Tailwind + DaisyUI 👋</h1>
 
 <button class="btn btn-primary">DaisyUI Button</button>
 
