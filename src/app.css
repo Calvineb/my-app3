@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fallback styles to ensure background and link color show during dev */
+body {
+	background-color: #fef08a; /* approx bg-yellow-200 */
+}
+
+a {
+	color: #dc2626; /* approx text-red-600 */
+}

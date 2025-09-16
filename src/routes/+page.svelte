@@ -1,19 +1,4 @@
-
-
-<p>
-    Visit <a href="https://svelte.dev" class="primary underline">Svelte</a>,
-</p>
-
-<h1 class="text-primary">Hello SvelteKit + Tailwind + DaisyUI 👋</h1>
-
-<button class="btn btn-primary">DaisyUI Button</button>
-
-<div class="card w-96 bg-base-100 shadow-xl mt-6">
-  <div class="card-body">
-    <h2 class="card-title">Test Card</h2>
-    <p>If you see this styled, everything is working 🎉</p>
-    <div class="card-actions justify-end">
-      <button class="btn btn-secondary">Cool</button>
-    </div>
-  </div>
-</div>
+<main class="bg-yellow-200 min-h-screen p-6">
+	<h1>Welcome to SvelteKit</h1>
+	<p>Visit <a href="https://svelte.dev/docs/kit" class="text-red-600 link">svelte.dev/docs/kit</a> to read the documentation</p>
+</main>

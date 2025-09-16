@@ -1,11 +1,19 @@
 <script>
-	import favicon from '$lib/assets/favicon.svg';
+  // Import Tailwind global CSS
+  import "../app.css";
 
-	let { children } = $props();
+  import favicon from '$lib/assets/favicon.svg';
+
+  let { children } = $props();
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+  <style>
+    /* Immediate fallback styles so the page reflects changes while Tailwind rebuilds */
+    body { background-color: #fef08a; }
+    a { color: #dc2626; }
+  </style>
+  <link rel="icon" href={favicon} />
 </svelte:head>
 
 {@render children?.()}
