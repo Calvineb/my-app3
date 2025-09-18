@@ -1,31 +1,25 @@
 <script>
-	import { onMount } from 'svelte';
-
-	let valueToCopy = `git init
+	let commands = [
+		`git init
 git add .
-git commit -m "Initial commit"`;
+git commit -m "Initial commit"`,
 
-	let copied = false;
+		`git checkout -b new-feature
+git push -u origin new-feature`,
 
-	async function copy() {
+		`git status
+git log --oneline`
+	];
+
+	let copied = Array(commands.length).fill(false);
+
+	async function copy(text, index) {
 		try {
-			await navigator.clipboard.writeText(valueToCopy);
-			copied = true;
-			setTimeout(() => (copied = false), 1500);
-		} catch (e) {
-			// Fallback for insecure contexts
-			const ta = document.createElement('textarea');
-			ta.value = valueToCopy;
-			document.body.appendChild(ta);
-			ta.select();
-			try { 
-				document.execCommand('copy'); 
-				copied = true; 
-			} catch (err) { 
-				console.error(err); 
-			}
-			document.body.removeChild(ta);
-			setTimeout(() => (copied = false), 1500);
+			await navigator.clipboard.writeText(text);
+			copied[index] = true;
+			setTimeout(() => copied[index] = false, 1500);
+		} catch (err) {
+			console.error(err);
 		}
 	}
 </script>
@@ -40,25 +34,25 @@ git commit -m "Initial commit"`;
 		to read the documentation
 	</p>
 
+	{#each commands as cmd, i}
 	<section class="mt-6">
-		<label class="block mb-2">Commands to copy</label>
-		
-		<!-- Display nicely formatted commands -->
-		<pre class="bg-white p-3 rounded shadow overflow-x-auto">
-			<code>{valueToCopy}</code>
-		</pre>
-
-		<!-- Copy button -->
-		<button 
-			class="btn btn-primary mt-2" 
-			on:click={copy} 
-			aria-live="polite"
-		>
-			{#if copied}
-				Copied!
-			{:else}
-				Copy
-			{/if}
-		</button>
+		<div class="flex items-start justify-between bg-white rounded shadow">
+			<pre class="p-3 m-0 overflow-x-auto flex-1">
+<code>{cmd}</code>
+			</pre>
+			<button 
+				class="btn btn-primary m-3 shrink-0" 
+				on:click={() => copy(cmd, i)}
+				aria-live="polite"
+			>
+				{#if copied[i]}
+					Copied!
+				{:else}
+					Copy
+				{/if}
+			</button>
+		</div>
 	</section>
+{/each}
+
 </main>
